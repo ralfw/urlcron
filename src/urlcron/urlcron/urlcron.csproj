@@ -42,18 +42,18 @@
     <Reference Include="Nancy.Hosting.Self, Version=1.4.1.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\packages\Nancy.Hosting.Self.1.4.1\lib\net40\Nancy.Hosting.Self.dll</HintPath>
     </Reference>
-    <Reference Include="servicehost, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\servicehost.2.3.0\lib\net45\servicehost.exe</HintPath>
-    </Reference>
-    <Reference Include="servicehost.contract, Version=1.0.6444.29651, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\servicehost.2.3.0\lib\net45\servicehost.contract.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="servicehost.contract">
+      <HintPath>..\packages\servicehost.contract.2.3.1\lib\net45\servicehost.contract.dll</HintPath>
+    </Reference>
+    <Reference Include="servicehost">
+      <HintPath>..\packages\servicehost.2.3.2\lib\net45\servicehost.exe</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
