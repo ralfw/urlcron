@@ -33,16 +33,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="servicehost, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\servicehost.2.3.0\lib\net45\servicehost.exe</HintPath>
+    <Reference Include="servicehost.contract, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\servicehost.contract.2.3.2\lib\net45\servicehost.contract.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="servicehost.contract">
-      <HintPath>..\packages\servicehost.contract.2.3.2\lib\net45\servicehost.contract.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ServicePortal.cs" />
