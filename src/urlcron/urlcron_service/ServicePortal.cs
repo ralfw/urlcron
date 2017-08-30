@@ -26,6 +26,9 @@ namespace urlcron.service
         [EntryPoint(HttpMethods.Post, "/run")]
         public Status Run(string job)
         {
+            var rh = new RequestHandler();
+            
+  
             return job.IndexOf("999") >= 0
                 ? Status.Failure("Oh, no!")
                 : Status.Success;
