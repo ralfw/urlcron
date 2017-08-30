@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "urlcron", "urlcron/urlcron.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "urlcron.service", "urlcron_service\urlcron.service.csproj", "{612AF737-AEC3-4A7B-ADC9-BCD66B665ADB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dependencylocator", "dependencylocator\dependencylocator.csproj", "{B971875E-E241-4C64-BC12-F6008EC33EAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests", "tests\tests.csproj", "{A92B9394-FC16-4718-94D7-11CE12091FDA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{612AF737-AEC3-4A7B-ADC9-BCD66B665ADB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{612AF737-AEC3-4A7B-ADC9-BCD66B665ADB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{612AF737-AEC3-4A7B-ADC9-BCD66B665ADB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B971875E-E241-4C64-BC12-F6008EC33EAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B971875E-E241-4C64-BC12-F6008EC33EAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B971875E-E241-4C64-BC12-F6008EC33EAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B971875E-E241-4C64-BC12-F6008EC33EAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A92B9394-FC16-4718-94D7-11CE12091FDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A92B9394-FC16-4718-94D7-11CE12091FDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A92B9394-FC16-4718-94D7-11CE12091FDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A92B9394-FC16-4718-94D7-11CE12091FDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
