@@ -1,5 +1,5 @@
-﻿using System;
-using System.Runtime.InteropServices.ComTypes;
+﻿using System.Runtime.InteropServices.ComTypes;
+using System.Text.RegularExpressions;
 
 namespace urlcron.service
 {
@@ -14,17 +14,12 @@ namespace urlcron.service
         
         public void Run(string jobId)
         {
-            /*
-            * Job-Quelle bestimmen
-            * Jobs laden
-            * Job finden
-            * Job ausführen
-            */
-
             var sourceUri = _config.JobSource;
+            
+            var repo = new Repository(sourceUri);
+            var job = repo.Load(jobId);
 
-            var jobRepo = new JobRepository(sourceUri);
-            jobRepo.Load(jobId);
+            Runner.Run(job);
         }
     }
 }

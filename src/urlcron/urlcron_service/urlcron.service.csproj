@@ -44,8 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config.cs" />
-    <Compile Include="JobRepository.cs" />
+    <Compile Include="Repository.cs" />
     <Compile Include="RequestHandler.cs" />
+    <Compile Include="Runner.cs" />
     <Compile Include="ServicePortal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

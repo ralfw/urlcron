@@ -46,6 +46,7 @@
     <Compile Include="dependencylocator\test_Resolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="jobrepository\test_JobRepository.cs" />
+    <Compile Include="runner\test_Runner.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\dependencylocator\dependencylocator.csproj">
@@ -62,6 +63,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="jobrepository\test_JobRepository_acceptance.txt" />
+    <Content Include="runner\test_Runner_endpoint.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

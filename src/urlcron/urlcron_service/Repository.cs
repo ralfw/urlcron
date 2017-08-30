@@ -12,11 +12,11 @@ namespace urlcron.service
     }
     
     
-    class JobRepository
+    class Repository
     {
         private readonly Uri _soureUri;
         
-        public JobRepository(Uri soureUri) {
+        public Repository(Uri soureUri) {
             _soureUri = soureUri;
         }
 
