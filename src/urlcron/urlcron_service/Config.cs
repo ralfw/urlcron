@@ -24,6 +24,6 @@ namespace urlcron.service
         }
 
         
-        public string JobSource => this.data.JobSource;
+        public Uri JobSource => new Uri(this.data.JobSource);
     }
 }

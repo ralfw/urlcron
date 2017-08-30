@@ -1,40 +1,50 @@
 ﻿using System;
 using System.Reflection;
+using System.Runtime.InteropServices.WindowsRuntime;
+using dependencylocator;
 using servicehost.contract;
 // ReSharper disable StringIndexOfIsCultureSpecific.1
 
 namespace urlcron.service
 {
-    public enum StatusCodes {
-        Success,
-        Failure
-    }
-    
-    public class Status
-    {
-        public static Status Success => new Status {Code = StatusCodes.Success, FailureExplanation = ""};
-        public static Status Failure(string explanation) => new Status { Code = StatusCodes.Failure, FailureExplanation = explanation};
-        
-        public StatusCodes Code { get; set; }
-        public string FailureExplanation { get; set; }
-    }
-    
-    
     [Service]
     public class ServicePortal
     {
-        [EntryPoint(HttpMethods.Post, "/run")]
-        public Status Run(string job)
+        public class StatusDto
         {
-            var rh = new RequestHandler();
+            public enum StatusCodes {
+                Success,
+                Failure
+            }
             
-  
-            return job.IndexOf("999") >= 0
-                ? Status.Failure("Oh, no!")
-                : Status.Success;
+            public static StatusDto Success => new StatusDto {Code = StatusCodes.Success, FailureExplanation = ""};
+            public static StatusDto Failure(string explanation) => new StatusDto { Code = StatusCodes.Failure, FailureExplanation = explanation};
+        
+            public StatusCodes Code { get; set; }
+            public string FailureExplanation { get; set; }
+        }
+
+
+        private readonly RequestHandler _reqh;
+        
+        public ServicePortal() {
+            _reqh = Resolver.Get<RequestHandler>();
         }
         
         
+        [EntryPoint(HttpMethods.Post, "/run")]
+        public StatusDto Run(string jobId)
+        {
+            try {
+                _reqh.Run(jobId);
+                return StatusDto.Success;
+            }
+            catch (Exception ex) {
+                return StatusDto.Failure($"Failed to run job with id {jobId}! Reason: {ex}");
+            }
+        }
+        
+
         [EntryPoint(HttpMethods.Get, "/info")]
         public string Info() {
             return Assembly.GetExecutingAssembly().GetName().Version.ToString();

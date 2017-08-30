@@ -2,7 +2,7 @@
 using dependencylocator;
 using NUnit.Framework;
 
-namespace tests
+namespace tests.dependencylocator
 {
     [TestFixture]
     public class test_Resolver
