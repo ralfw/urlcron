@@ -6,13 +6,13 @@ using System.Net;
 
 namespace urlcron.service
 {
-    public class JobDto {
+    class JobDto {
         public string Id { get; set; }
         public string Url { get; set; }
     }
     
     
-    public class JobRepository
+    class JobRepository
     {
         private readonly Uri _soureUri;
         
@@ -20,6 +20,11 @@ namespace urlcron.service
             _soureUri = soureUri;
         }
 
+        
+        public JobDto[] Load() {
+            var textJobs = Load(_soureUri);
+            return Parse(textJobs).ToArray();
+        }
         
         public JobDto Load(string jobId) {
             var textJobs = Load(_soureUri);
@@ -42,7 +47,8 @@ namespace urlcron.service
         private static IEnumerable<JobDto> Parse(string textJobs)
         {
             var linesJobs = new StringReader(textJobs);
-            while(true) {
+            while (true)
+            {
                 var lineJob = linesJobs.ReadLine();
                 if (lineJob == null) break;
 
@@ -52,7 +58,7 @@ namespace urlcron.service
                 var partsJob = lineJob.Split(';');
 
                 yield return new JobDto {
-                    Id = partsJob[0].Trim(), 
+                    Id = partsJob[0].Trim(),
                     Url = partsJob[1].Trim()
                 };
             }
