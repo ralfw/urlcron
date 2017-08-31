@@ -8,6 +8,7 @@ namespace urlcron.service.providers
 {
     internal class JobDto {
         public string Id { get; set; }
+        public DateTime CreatedAt { get; set; }
         public TimeSpan Interval { get; set; }
         public string Url { get; set; }
     }
@@ -37,11 +38,11 @@ namespace urlcron.service.providers
         /*
             Repository CSV text structure:
             
-            <job id> ";" <interval as dd:hh:mm:ss> ";" <url>
+            <job id> ";" <createdAt> ";" <interval as dd:hh:mm:ss> ";" <url>
             
             - Each line contains a job description like above. Example:
             
-            123;1:15:00;http://localhost:8080
+            123;2017-08-31T08:56;1:15:00;http://localhost:8080
             
             - Empty lines and lines starting with "#" are skipped.
         */
@@ -60,8 +61,9 @@ namespace urlcron.service.providers
 
                 yield return new JobDto {
                     Id = partsJob[0].Trim(),
-                    Interval = TimeSpan.Parse(partsJob[1]),
-                    Url = partsJob[2].Trim()
+                    CreatedAt = DateTime.Parse(partsJob[1]),
+                    Interval = TimeSpan.Parse(partsJob[2]),
+                    Url = partsJob[3].Trim()
                 };
             }
         }

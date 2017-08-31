@@ -1,1 +1,3 @@
-statictest;http://raw.githubusercontent.com/ralfw/urlcron/master/src/urlcron/tests/jobrepository/test_JobRepository_acceptance.txt
+statictest;1:0;http://raw.githubusercontent.com/ralfw/urlcron/master/src/urlcron/tests/acceptance/jobsource_acceptance.txt
+every2Min;2:0;http://raw.githubusercontent.com/ralfw/urlcron/master/src/urlcron/tests/acceptance/jobsource_acceptance.txt
+every5Min;5:0;http://raw.githubusercontent.com/ralfw/urlcron/master/src/urlcron/tests/acceptance/jobsource_acceptance.txt
