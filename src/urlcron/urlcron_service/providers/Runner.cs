@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Threading;
 
 namespace urlcron.service.providers
 {
@@ -9,23 +10,28 @@ namespace urlcron.service.providers
     {
         public static void Run(IEnumerable<JobDto> jobs) {
             var joblist = jobs.ToList();
-            Console.WriteLine($"{DateTime.Now}: Running {joblist.Count} jobs:");
+            Console.WriteLine($"{DateTime.Now}: Running {joblist.Count} jobs...");
             
-            joblist.ForEach(Run);
+            joblist.ForEach(RunAsync);
+        }
+
+        public static void RunAsync(JobDto job) {
+            RunAsync(job,
+                () => Console.WriteLine($"Succeeded running {job.Id} at {job.Url}"),
+                errMsg => Console.WriteLine($"FAILED running {job.Id} at {job.Url}! Reason: {errMsg}"));
         }
         
-        
-        public static void Run(JobDto job) {
-            Console.Write($"Running '{job.Id}' at '{job.Url}'... ");
-            try {
-                var wc = new WebClient();
-                wc.DownloadString(job.Url);
-                Console.WriteLine("Succeeded!");
-            }
-            catch (Exception ex) {
-                Console.WriteLine("FAILED!");
-                throw new ApplicationException($"Unable to run job '{job.Id}' at '{job.Url}'! Reason: {ex}");
-            }
+        internal static void RunAsync(JobDto job, Action onSuccess, Action<string> onFailure) {
+            ThreadPool.QueueUserWorkItem(_ => {
+                try {
+                    var wc = new WebClient();
+                    wc.DownloadString(job.Url);
+                    onSuccess();
+                }
+                catch (Exception ex) {
+                    onFailure(ex.ToString());
+                }
+            }, null);
         }
     }
 }

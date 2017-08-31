@@ -36,7 +36,7 @@ namespace tests.acceptance
     {
         [EntryPoint(HttpMethods.Get, "/test")]
         public void Test(string jobname) {
-            Console.WriteLine("Job '{0}' at {1}", jobname, DateTime.Now);
+            Console.WriteLine("[Job '{0}' at {1}]", jobname, DateTime.Now);
         }
     }
 }

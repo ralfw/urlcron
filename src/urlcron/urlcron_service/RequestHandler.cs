@@ -16,7 +16,7 @@ namespace urlcron.service
             var repo = new Repository(_config.JobSource);
             var job = repo.Load(jobId);
 
-            Runner.Run(job);
+            Runner.RunAsync(job);
         }
         
         
