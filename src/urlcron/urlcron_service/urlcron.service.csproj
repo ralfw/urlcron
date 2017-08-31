@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="portals\DemoPortal.cs" />
     <Compile Include="portals\ServicePortal.cs" />
     <Compile Include="portals\Trigger.cs" />
     <Compile Include="providers\Config.cs" />
