@@ -19,8 +19,7 @@ namespace tests.runner
                 () => are.Set(),
                 _ => Assert.Fail());
             
-            are.WaitOne(1000);
-            Assert.Pass();
+            Assert.IsTrue(are.WaitOne(1000));
         }
         
         
@@ -33,8 +32,7 @@ namespace tests.runner
                 Assert.Fail,
                 _ => are.Set());
             
-            are.WaitOne(90000); // Timeout should be longer than WebClient timeout in RunAsync()
-            Assert.Pass();
+            Assert.IsTrue(are.WaitOne(90000)); // Timeout should be longer than WebClient timeout in RunAsync()
         }
     }
 }

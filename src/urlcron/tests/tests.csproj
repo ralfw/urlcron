@@ -64,6 +64,7 @@
     <Compile Include="jobrepository\test_JobRepository.cs" />
     <Compile Include="runner\test_Runner.cs" />
     <Compile Include="scheduler\test_Scheduler.cs" />
+    <Compile Include="trigger\test_Trigger.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\dependencylocator\dependencylocator.csproj">

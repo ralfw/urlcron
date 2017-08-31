@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using dependencylocator;
-using Nancy;
 using urlcron.service;
+using urlcron.service.portals;
 using urlcron.service.providers;
 
 namespace urlcron
@@ -15,7 +14,9 @@ namespace urlcron
             Resolver.Add<RequestHandler>(() => new RequestHandler(config));
             
             var endpoint = new Uri(args[0]);
-            Server.Run(endpoint);
+            using (new Trigger(endpoint)) {
+                Server.Run(endpoint);
+            }
         }
     }
 }

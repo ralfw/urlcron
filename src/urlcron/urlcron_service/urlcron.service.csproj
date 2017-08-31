@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="portals\ServicePortal.cs" />
+    <Compile Include="portals\Trigger.cs" />
     <Compile Include="providers\Config.cs" />
     <Compile Include="providers\Repository.cs" />
     <Compile Include="providers\Runner.cs" />
