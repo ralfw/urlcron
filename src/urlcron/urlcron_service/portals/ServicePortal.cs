@@ -26,9 +26,11 @@ namespace urlcron.service.portals
 
 
         private readonly RequestHandler _reqh;
+        private readonly Trigger _trigger;
         
         public ServicePortal() {
             _reqh = Resolver.Get<RequestHandler>();
+            _trigger = Resolver.Get<Trigger>();
         }
         
         
@@ -54,6 +56,17 @@ namespace urlcron.service.portals
             catch (Exception ex) {
                 return StatusDto.Failure($"Failed to run job with id '{jobId}'! Reason: {ex}");
             }
+        }
+        
+        
+        [EntryPoint(HttpMethods.Post, "/start")]
+        public void Start() {
+            _trigger.Start();
+        }
+        
+        [EntryPoint(HttpMethods.Post, "/stop")]
+        public void Stop() {
+            _trigger.Stop();
         }
         
 

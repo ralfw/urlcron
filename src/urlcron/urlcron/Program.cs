@@ -10,11 +10,14 @@ namespace urlcron
     {
         public static void Main(string[] args)
         {
+            var endpoint = new Uri(args[0]);
+            
             var config = new Config();
             Resolver.Add<RequestHandler>(() => new RequestHandler(config));
+            var trigger = new Trigger(endpoint);
+            Resolver.Add<Trigger>(() => trigger);
             
-            var endpoint = new Uri(args[0]);
-            using (new Trigger(endpoint)) {
+            using (trigger) {
                 Server.Run(endpoint);
             }
         }

@@ -8,32 +8,44 @@ namespace urlcron.service.portals
     public class Trigger : IDisposable {
         private const int DEFAULT_INITIAL_DELAY_MSEC = 10 * 1000;
         private const int DEFAULT_INTERVAL_LENGTH_MSEC = 60 * 1000;
-        
+
+        private readonly Action _triggerAction;
+        private readonly int _intervalLengthMsec;
         private Timer _timer;
 
         
         public Trigger(Uri endpoint) {
-            Start(() => Trigger_runAllDue(endpoint), DEFAULT_INTERVAL_LENGTH_MSEC);
+            _triggerAction = () => Trigger_runAllDue(endpoint);
+            _intervalLengthMsec = DEFAULT_INTERVAL_LENGTH_MSEC;
+            Start();
         }
         
         internal Trigger(Action triggerAction, int intervalLengthMsec) {
-            Start(triggerAction, intervalLengthMsec);
+            _triggerAction = triggerAction;
+            _intervalLengthMsec = intervalLengthMsec;
+            Start();
         }
         
         
-        private void Start(Action triggerAction, int intervalLengthMsec) {
+        public void Start() {
+            Stop();
+            
+            _timer = new Timer(_ => _triggerAction(), null, DEFAULT_INITIAL_DELAY_MSEC, _intervalLengthMsec);
+            Console.WriteLine("Interval trigger started");
+        }
+        
+        public void Stop() {
             _timer?.Dispose();
-            _timer = new Timer(_ => triggerAction(), null, DEFAULT_INITIAL_DELAY_MSEC, intervalLengthMsec);
+            _timer = null;
+            Console.WriteLine("Interval trigger stopped");
         }
-        
-        public void Stop() => _timer?.Dispose();
 
+        
         public void Dispose() => Stop();
 
         
-        private void Trigger_runAllDue(Uri endpoint) {
-            Console.WriteLine("Triggering at {0}", DateTime.Now);
-
+        private static void Trigger_runAllDue(Uri endpoint) {
+            Console.WriteLine("{0}: Triggering", DateTime.Now);
             try {
                 var wc = new WebClient();
                     
@@ -41,9 +53,7 @@ namespace urlcron.service.portals
 
                 var json = new JavaScriptSerializer();
                 var status = json.Deserialize<ServicePortal.StatusDto>(result);
-                if (status.Code == ServicePortal.StatusDto.StatusCodes.Success)
-                    Console.WriteLine("  Successfully triggered");
-                else
+                if (status.Code == ServicePortal.StatusDto.StatusCodes.Failure)
                     Console.WriteLine("  Failure during trigger processing! Reason: {0}", status.FailureExplanation);
             }
             catch (Exception ex) {
