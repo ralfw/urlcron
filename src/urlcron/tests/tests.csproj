@@ -83,6 +83,9 @@
     <Content Include="acceptance\urlcron_acceptance.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="acceptance\urlcron_local_acceptance.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="config\test_Config.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -16,7 +16,7 @@ namespace tests.acceptance
         public void Acceptance()
         {
             Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
-            var config = new Config("acceptance/urlcron_acceptance.config");
+            var config = new Config("acceptance/urlcron_local_acceptance.config");
             Resolver.Add<RequestHandler>(() => new RequestHandler(config));
             
             using (var sh = new ServiceHost()) {
