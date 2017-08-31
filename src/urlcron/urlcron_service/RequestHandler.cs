@@ -1,5 +1,4 @@
-﻿using System.Runtime.InteropServices.ComTypes;
-using System.Text.RegularExpressions;
+﻿using System;
 using urlcron.service.providers;
 
 namespace urlcron.service
@@ -14,12 +13,20 @@ namespace urlcron.service
         
         
         public void Run(string jobId) {
-            var sourceUri = _config.JobSource;
-            
-            var repo = new Repository(sourceUri);
+            var repo = new Repository(_config.JobSource);
             var job = repo.Load(jobId);
 
             Runner.Run(job);
+        }
+        
+        
+        public void RunAllDue() {
+            var repo = new Repository(_config.JobSource);
+            var jobs = repo.Load();
+            
+            var dueJobs = Scheduler.Collect_due_jobs(jobs, DateTime.Now.ToUniversalTime());
+            
+            Runner.Run(dueJobs);
         }
     }
 }

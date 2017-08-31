@@ -32,6 +32,18 @@ namespace urlcron.service.portals
         }
         
         
+        [EntryPoint(HttpMethods.Post, "/runall")]
+        public StatusDto Run()
+        {
+            try {
+                _reqh.RunAllDue();
+                return StatusDto.Success;
+            }
+            catch (Exception ex) {
+                return StatusDto.Failure($"Failed to run due jobs! Reason: {ex}");
+            }
+        }
+        
         [EntryPoint(HttpMethods.Post, "/run")]
         public StatusDto Run(string jobId)
         {

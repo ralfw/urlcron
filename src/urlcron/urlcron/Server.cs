@@ -5,7 +5,7 @@ using servicehost;
 
 namespace urlcron
 {
-    class Server 
+    internal class Server 
     {
         public static void Run(Uri endpoint) {
             using (var servicehost = new ServiceHost()) {

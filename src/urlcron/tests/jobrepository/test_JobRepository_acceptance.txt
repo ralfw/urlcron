@@ -1,5 +1,5 @@
- a ; http://ccd-school.de/a
+ a ; 01:02; http://ccd-school.de/a
 
-;http://ccd-school.de/empty
+; 01:02:03; http://ccd-school.de/empty
 # comment
-b;http://ccd-school.de/b
+b;01:02:03:04;http://ccd-school.de/b

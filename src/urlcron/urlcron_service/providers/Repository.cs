@@ -6,13 +6,14 @@ using System.Net;
 
 namespace urlcron.service.providers
 {
-    class JobDto {
+    internal class JobDto {
         public string Id { get; set; }
+        public TimeSpan Interval { get; set; }
         public string Url { get; set; }
     }
     
     
-    class Repository
+    internal class Repository
     {
         private readonly Uri _soureUri;
         
@@ -36,13 +37,13 @@ namespace urlcron.service.providers
         /*
             Repository CSV text structure:
             
-            <job id> ";" <url>
+            <job id> ";" <interval as dd:hh:mm:ss> ";" <url>
             
             - Each line contains a job description like above. Example:
             
-            123;http://localhost:8080
+            123;1:15:00;http://localhost:8080
             
-            - Empty lines and lines starting with "#" should be skipped.
+            - Empty lines and lines starting with "#" are skipped.
         */
         private static IEnumerable<JobDto> Parse(string textJobs)
         {
@@ -59,7 +60,8 @@ namespace urlcron.service.providers
 
                 yield return new JobDto {
                     Id = partsJob[0].Trim(),
-                    Url = partsJob[1].Trim()
+                    Interval = TimeSpan.Parse(partsJob[1]),
+                    Url = partsJob[2].Trim()
                 };
             }
         }
