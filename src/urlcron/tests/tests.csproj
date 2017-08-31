@@ -59,6 +59,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="acceptance\urlcron_acceptance.config" />
     <Content Include="config\test_Config.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

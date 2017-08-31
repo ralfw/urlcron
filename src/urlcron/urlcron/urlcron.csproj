@@ -67,10 +67,19 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\dependencylocator\dependencylocator.csproj">
+      <Project>{b971875e-e241-4c64-bc12-f6008ec33eac}</Project>
+      <Name>dependencylocator</Name>
+    </ProjectReference>
     <ProjectReference Include="..\urlcron_service\urlcron.service.csproj">
       <Project>{612af737-aec3-4a7b-adc9-bcd66b665adb}</Project>
       <Name>urlcron.service</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="urlcron.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

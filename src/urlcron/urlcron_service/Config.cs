@@ -13,7 +13,7 @@ namespace urlcron.service
 
         private readonly ConfigDto data;
         
-        public Config() : this("app.config") {}
+        public Config() : this("urlcron.config") {}
         public Config(string configfilename) {
             if (!File.Exists(configfilename)) throw new InvalidOperationException($"Missing config file: {configfilename}!");
 
