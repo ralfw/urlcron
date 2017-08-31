@@ -38,7 +38,7 @@ namespace urlcron.service.providers
         /*
             Repository CSV text structure:
             
-            <job id> ";" <createdAt> ";" <interval as dd:hh:mm:ss> ";" <url>
+            <job id> ";" <createdAt> ";" <interval as [dd:]hh:mm:ss> ";" <url>
             
             - Each line contains a job description like above. Example:
             

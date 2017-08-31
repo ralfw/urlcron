@@ -33,6 +33,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Mono.Posix, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756">
+      <HintPath>..\packages\Mono.Posix.4.0.0.0\lib\net40\Mono.Posix.dll</HintPath>
+    </Reference>
+    <Reference Include="Nancy, Version=1.4.4.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\Nancy.1.4.4\lib\net40\Nancy.dll</HintPath>
+    </Reference>
+    <Reference Include="Nancy.Hosting.Self, Version=1.4.1.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\Nancy.Hosting.Self.1.4.1\lib\net40\Nancy.Hosting.Self.dll</HintPath>
+    </Reference>
+    <Reference Include="servicehost, Version=2.3.2.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\servicehost.2.3.2\lib\net45\servicehost.exe</HintPath>
+    </Reference>
+    <Reference Include="servicehost.contract, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\servicehost.contract.2.3.1\lib\net45\servicehost.contract.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -42,6 +57,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="acceptance\test_ServicePortal.cs" />
     <Compile Include="config\test_Config.cs" />
     <Compile Include="dependencylocator\test_Resolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -61,12 +77,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="acceptance\jobsource_acceptance.txt" />
-    <Content Include="acceptance\urlcron_acceptance.config" />
+    <Content Include="acceptance\urlcron_acceptance.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="config\test_Config.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="jobrepository\test_JobRepository_acceptance.txt" />
     <Content Include="runner\test_Runner_endpoint.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

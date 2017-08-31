@@ -32,8 +32,8 @@ namespace urlcron.service.portals
         }
         
         
-        [EntryPoint(HttpMethods.Post, "/runall")]
-        public StatusDto Run()
+        [EntryPoint(HttpMethods.Post, "/runAllDue")]
+        public StatusDto RunAllDue()
         {
             try {
                 _reqh.RunAllDue();
