@@ -1,5 +1,5 @@
- a ; 01:02; http://ccd-school.de/a
+ a ; 2017-08-01T10:11:12; 01:02; http://ccd-school.de/a
 
-; 01:02:03; http://ccd-school.de/empty
+; 2017-08-02T11:12:13; 01:02:03; http://ccd-school.de/empty
 # comment
-b;01:02:03:04;http://ccd-school.de/b
+b;2017-08-03T12:13:14;01:02:03:04;http://ccd-school.de/b
