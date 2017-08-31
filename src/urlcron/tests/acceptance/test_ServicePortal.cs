@@ -12,12 +12,6 @@ namespace tests.acceptance
     [TestFixture]
     public class test_ServicePortal
     {
-        [Setup]
-        public void Setup() {
-            Environment.CurrentDirectory = TestContext.CurrentContext.TestDirectory;
-        }
-        
-        
         [Test, Explicit]
         public void Acceptance()
         {
@@ -33,6 +27,16 @@ namespace tests.acceptance
                 var result = wc.UploadString("http://localhost:8080/runAllDue", "POST", "");
                 Console.WriteLine(result);
             }
+        }
+    }
+
+
+    [Service]
+    public class TestService
+    {
+        [EntryPoint(HttpMethods.Get, "/test")]
+        public void Test(string jobname) {
+            Console.WriteLine("Job '{0}' at {1}", jobname, DateTime.Now);
         }
     }
 }
