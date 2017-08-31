@@ -8,7 +8,13 @@ namespace dependencylocator
         
         public static void Clear() => __factories.Clear();
         
-        public static void Add<T>(Func<object> typefactory) => __factories.Add(typeof(T), typefactory); 
-        public static T Get<T>() => (T)__factories[typeof(T)]();
+        public static void Add<T>(Func<object> typefactory) => __factories.Add(typeof(T), typefactory);
+
+        public static T Get<T>()
+        {
+            if (__factories.TryGetValue(typeof(T), out Func<object> factory))
+                return (T)factory();
+            throw new ApplicationException($"Could not resolve dependency on '{typeof(T).Name}'!");
+        }
     }
 }

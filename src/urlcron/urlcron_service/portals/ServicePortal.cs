@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Reflection;
-using System.Runtime.InteropServices.WindowsRuntime;
 using dependencylocator;
 using servicehost.contract;
+
 // ReSharper disable StringIndexOfIsCultureSpecific.1
 
-namespace urlcron.service
+namespace urlcron.service.portals
 {
     [Service]
     public class ServicePortal
@@ -40,7 +40,7 @@ namespace urlcron.service
                 return StatusDto.Success;
             }
             catch (Exception ex) {
-                return StatusDto.Failure($"Failed to run job with id {jobId}! Reason: {ex}");
+                return StatusDto.Failure($"Failed to run job with id '{jobId}'! Reason: {ex}");
             }
         }
         

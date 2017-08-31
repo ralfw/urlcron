@@ -1,6 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 using urlcron.service;
+using urlcron.service.providers;
 
 namespace tests.runner
 {

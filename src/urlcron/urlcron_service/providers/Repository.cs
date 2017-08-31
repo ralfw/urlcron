@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 
-namespace urlcron.service
+namespace urlcron.service.providers
 {
     class JobDto {
         public string Id { get; set; }

@@ -17,6 +17,8 @@ namespace tests.dependencylocator
             var i = Resolver.Get<int>();
             var uri = Resolver.Get<Uri>();
             Assert.AreEqual("http://localhost:8080/", uri.AbsoluteUri);
+
+            Assert.Throws<ApplicationException>(() => Resolver.Get<double>());
         }
     }
 }

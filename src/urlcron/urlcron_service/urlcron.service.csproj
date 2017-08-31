@@ -43,11 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Config.cs" />
-    <Compile Include="Repository.cs" />
+    <Compile Include="portals\ServicePortal.cs" />
+    <Compile Include="providers\Config.cs" />
+    <Compile Include="providers\Repository.cs" />
+    <Compile Include="providers\Runner.cs" />
     <Compile Include="RequestHandler.cs" />
-    <Compile Include="Runner.cs" />
-    <Compile Include="ServicePortal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

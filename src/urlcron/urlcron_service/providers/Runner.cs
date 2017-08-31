@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 
-namespace urlcron.service
+namespace urlcron.service.providers
 {
     class Runner
     {

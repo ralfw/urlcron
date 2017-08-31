@@ -1,5 +1,6 @@
 ﻿using System.Runtime.InteropServices.ComTypes;
 using System.Text.RegularExpressions;
+using urlcron.service.providers;
 
 namespace urlcron.service
 {
@@ -12,8 +13,7 @@ namespace urlcron.service
         }
         
         
-        public void Run(string jobId)
-        {
+        public void Run(string jobId) {
             var sourceUri = _config.JobSource;
             
             var repo = new Repository(sourceUri);

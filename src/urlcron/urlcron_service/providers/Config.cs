@@ -2,7 +2,7 @@
 using System.IO;
 using System.Web.Script.Serialization;
 
-namespace urlcron.service
+namespace urlcron.service.providers
 {
     public class Config
     {
